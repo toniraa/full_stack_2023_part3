@@ -61,16 +61,17 @@ const generateId = () => {
   return maxId + 1
 }
 
+
 app.post('/api/persons', (request, response) => {
   const body = request.body
 
-  if (!body.name) {
+  if (!body.name || body.name == '') {
     return response.status(400).json({ 
       error: 'Name is missing' 
     })
   }
 
-  if (!body.number) {
+  if (!body.number || body.number == '') {
     return response.status(400).json({ 
       error: 'Number is missing' 
     })
